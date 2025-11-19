@@ -41,7 +41,56 @@
 ### Step 14: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int main() {
+    int d = 29, m = 2, y = 2024;
+
+    int valid = 1;
+    int maxDays;
+
+    if (y < 1)
+        valid = 0;
+
+    if (m < 1 || m > 12)
+        valid = 0;
+
+    switch (m) {
+        case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+            maxDays = 31;
+            break;
+
+        case 4: case 6: case 9: case 11:
+            maxDays = 30;
+            break;
+
+        case 2:
+            if ((y % 400 == 0) || (y % 4 == 0 && y % 100 != 0))
+                maxDays = 29;
+            else
+                maxDays = 28;
+            break;
+
+        default:
+            valid = 0;
+    }
+
+    if (d < 1 || d > maxDays)
+        valid = 0;
+
+    if (valid)
+        printf("Valid Date\n");
+    else
+        printf("Invalid Date\n");
+
+    return 0;
+}
+```
+
 # Output:
+<img width="823" height="287" alt="image" src="https://github.com/user-attachments/assets/bb0226d7-3be5-4b2c-8db4-bf49889ea62c" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -89,7 +138,31 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 13: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+int min(int a, int b) {
+    return (a < b) ? a : b;
+}
+
+int main() {
+    int x = 100, y = 72;   
+
+    printf("Numbers: %d and %d\n", x, y);
+
+    printf("Maximum: %d\n", max(x, y));
+    printf("Minimum: %d\n", min(x, y));
+
+    return 0;
+}
+```
 # Output:
+<img width="807" height="219" alt="image" src="https://github.com/user-attachments/assets/8fea58a1-3876-469d-b566-81d9f0e181ac" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -137,7 +210,30 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11: 
  Stop
 # Program:
+```
+#include <stdio.h>
+
+float c_to_f(float c) {
+    return (c * 9.0 / 5.0) + 32;
+}
+
+float f_to_c(float f) {
+    return (f - 32) * 5.0 / 9.0;
+}
+
+int main() {
+    float c = 1000.0;
+    float f = 55.0;
+
+    printf("Celsius: %.2f -> Fahrenheit: %.2f\n", c, c_to_f(c));
+    printf("Fahrenheit: %.2f -> Celsius: %.2f\n", f, f_to_c(f));
+
+    return 0;
+}
+```
 # Output:
+<img width="770" height="225" alt="image" src="https://github.com/user-attachments/assets/af2a20f4-d2aa-43df-8433-124f4d092d0e" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -185,7 +281,48 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 7: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void spiralPrint(int a[4][4]) {
+    int top = 0, bottom = 3, left = 0, right = 3;
+
+    while (top <= bottom && left <= right) {
+
+        for (int i = left; i <= right; i++)
+            printf("%d ", a[top][i]);
+        top++;
+
+        for (int i = top; i <= bottom; i++)
+            printf("%d ", a[i][right]);
+        right--;
+
+        for (int i = right; i >= left; i--)
+            printf("%d ", a[bottom][i]);
+        bottom--;
+
+        for (int i = bottom; i >= top; i--)
+            printf("%d ", a[i][left]);
+        left++;
+    }
+}
+
+int main() {
+    int a[4][4] = {
+        {654,  2,  598,  4},
+        {12, 456, 14, 5},
+        {11, 100, 15, 6},
+        {10, 9,  8,  123}
+    };
+
+    spiralPrint(a);
+
+    return 0;
+}
+```
 # Output:
+<img width="785" height="226" alt="image" src="https://github.com/user-attachments/assets/783978e4-3624-4cbc-ade5-06bc9ef516a0" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -220,7 +357,41 @@ To build a C program to convert a string as described above, using a user-define
 ### Step 6: 
  Stop
 # Program:
+```
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void convert(char s[]) {
+    int len = strlen(s);
+
+    if (len > 0)
+        s[0] = toupper(s[0]);
+
+    if (len > 1)
+        s[len - 1] = toupper(s[len - 1]);
+
+    for (int i = 0; i < len; i++) {
+        if (s[i] == ' ') {
+            if (i - 1 >= 0)
+                s[i - 1] = toupper(s[i - 1]);
+            if (i + 1 < len)
+                s[i + 1] = toupper(s[i + 1]);
+        }
+    }
+
+    printf("Converted string: %s", s);
+}
+
+int main() {
+    char str[100] = "SUDHARSAN sivakumar";
+    convert(str);
+    return 0;
+}
+```
 # Output:
+<img width="768" height="266" alt="image" src="https://github.com/user-attachments/assets/e11b36b6-333e-4e36-96ff-5b7a17cc62f1" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
